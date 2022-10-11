@@ -1,0 +1,19 @@
+<process name="default">
+  <sequence name="Sequence Start">
+    <operation name="UPDATE">
+      <participant name="LightweightJDBCAdapterQuery"/>
+      <output message="LightweightJDBCAdapterTypeInputMessage">
+        <assign to="." from="*"></assign>
+        <assign to="pool">oraclePool</assign>
+        <assign to="query_type">UPDATE</assign>
+        <assign to="result_name">result</assign>
+        <assign to="row_name">row</assign>
+        <assign to="sql">UPDATE mbx_message SET CREATED_DATETIME = TO_DATE(&apos;2019-10-01 12:10:00&apos;, &apos;yyyy-mm-dd hh24:mi:ss&apos;) where CREATED_DATETIME between to_date(&apos;2022-06-06 13:00:00&apos;,&apos;YYYY-MM-DD HH24:MI:SS&apos;)  and to_date(&apos;2022-06-06 23:59:59&apos;,&apos;YYYY-MM-DD HH24:MI:SS&apos;) and message_name like &apos;%TEST_062022_MOBILE%&apos;</assign>
+      </output>
+      <input message="inmsg">
+        <assign to="." from="*"></assign>
+      </input>
+    </operation>
+
+  </sequence>
+</process>
